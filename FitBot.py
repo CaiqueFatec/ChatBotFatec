@@ -1,5 +1,7 @@
 import os
 import telebot
+from flask import Flask
+from threading import Thread
 
 CHAVE_API = os.getenv("CHAVE_API")
 
@@ -286,4 +288,14 @@ def responder(mensagem):
             """
     bot.reply_to(mensagem, texto)
 
-bot.polli
+app = Flask('')
+
+@app.route('/')
+def home():
+    return "Bot está rodando"
+
+def manter_online():
+    app.run(host='0.0.0.0', port=8080)
+
+Thread(target=manter_online).start()
+bot.polling()
