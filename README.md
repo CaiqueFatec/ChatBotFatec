@@ -1,0 +1,1 @@
+"Projeto de chatbot do curso de ADS, um chatbot feito para o telegram utilizando a linguagem python"
