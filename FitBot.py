@@ -9,6 +9,11 @@ bot = telebot.TeleBot(CHAVE_API)
 
 usuarios = {}
 
+
+@bot.message_handler(commands=["sac"])
+def sac(message):
+    bot.send_message(message.chat.id, "Caso queria falar com um dos nossos atendentes lique para 11940028922")
+
 @bot.message_handler(commands=["treino"])
 def treino(message):
     chat_id = message.chat.id
@@ -284,6 +289,7 @@ def responder(mensagem):
          /treino Consulte seu treino.
          /meuplano Consulte seu plano atual caso inscrito.
          /meuAgendamento Consulte seu agendamento de treino.
+         /sac Fale com um des nossos atendentes.
         Responder qualquer outra coisa não vai funcionar, clique em uma das opções
             """
     bot.reply_to(mensagem, texto)
