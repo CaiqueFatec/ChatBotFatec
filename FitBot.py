@@ -2,6 +2,7 @@ import os
 import telebot
 from flask import Flask
 from threading import Thread
+import time
 
 CHAVE_API = os.getenv("CHAVE_API")
 
@@ -303,5 +304,13 @@ def home():
 def manter_online():
     app.run(host='0.0.0.0', port=8080)
 
+def iniciar_bot():
+    while True:
+        try:
+            bot.polling()
+        except Exception as e:
+            print(f"[ERRO] Bot caiu: {e}")
+            time.sleep(5)
+
 Thread(target=manter_online).start()
-bot.polling()
+iniciar_bot()
