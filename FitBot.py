@@ -13,19 +13,12 @@ usuarios = {}
 
 @bot.message_handler(commands=["sac"])
 def sac(message):
-    bot.send_message(message.chat.id, "Caso queria falar com um dos nossos atendentes lique para 11940028922")
+    bot.send_message(message.chat.id, "Caso queria falar com um dos nossos atendentes lique para 11940028922\nClique aqui para acessar nosso grupo de duvidas: https://t.me/+oXtY0G20XWQ2MmRh\n Para voltar ao inicio clique em /voltar")
 
-@bot.message_handler(commands=["treino"])
-def treino(message):
-    chat_id = message.chat.id
-    plano = usuarios.get(chat_id, {}).get("plano")
-
-    if not plano:
-        bot.send_message(chat_id, "Você ainda não escolheu um plano. Acesse /planos para selecionar um.")
-        return
-    
+@bot.message_handler(commands=["treinoCompleto"])
+def treinoCompleto(message):
     texto = """
-        Treino ABC para hipertrofia voltado para praticantes intermediários, com divisão clássica por grupamentos musculares. O foco é em sobrecarga progressiva e volume moderado a alto, ideal para promover crescimento muscular.
+        Treino completo ABC para hipertrofia voltado para praticantes intermediários, com divisão clássica por grupamentos musculares. O foco é em sobrecarga progressiva e volume moderado a alto, ideal para promover crescimento muscular.
 
         🔹 Treino A – Peito, Ombro e Tríceps
         1. Supino reto com barra – 4x6-10
@@ -66,7 +59,71 @@ def treino(message):
 
         Faça já seu agendamento de treino, clique em /agendar
 
-        Caso queira volta para o menu inicial digite voltar!!!
+        Para voltar ao inicio clique em /voltar
+            """
+    bot.send_message(message.chat.id, texto)
+    
+@bot.message_handler(commands=["treinoA"])
+def treinoA(message):
+    texto = """
+        🔹 Treino A – Peito, Ombro e Tríceps
+        1. Supino reto com barra – 4x6-10
+        2. Supino inclinado com halteres – 3x8-12
+        3. Crucifixo com halteres (banco plano ou inclinado) –\n3x10-12
+        4. Elevação lateral (ombros) – 3x12-15
+        5. Desenvolvimento com halteres ou máquina – 3x8-12
+        6. Tríceps testa (barra ou halteres) – 3x10-12
+        7. Tríceps corda na polia – 3x12-15
+        \nPara voltar ao inicio clique em /voltar
+            """
+    bot.send_message(message.chat.id, texto)
+
+@bot.message_handler(commands=["treinoB"])
+def treinoB(message):
+    texto = """
+        🔹 Treino B – Costas e Bíceps
+        1. Barra fixa (livre ou assistida) – 4x6-10
+        2. Remada curvada com barra – 3x8-10
+        3. Puxada alta na polia (pegada aberta) – 3x10-12
+        4. Remada unilateral com halteres – 3x10-12
+        5. Rosca direta com barra – 3x8-12
+        6. Rosca alternada com halteres – 3x10-12
+        7. Rosca concentrada ou martelo – 3x12-15
+        \nPara voltar ao inicio clique em /voltar
+            """
+    bot.send_message(message.chat.id, texto)
+
+@bot.message_handler(commands=["treinoC"])
+def treinoC(message):
+    texto = """
+        🔹 Treino C – Pernas e Abdômen
+        1. Agachamento livre – 4x6-10
+        2. Leg press – 3x10-12
+        3. Cadeira extensora – 3x12-15
+        4. Mesa flexora – 3x12-15
+        5. Elevação de panturrilha sentado – 3x15-20
+        6. Elevação de panturrilha em pé – 3x15-20
+        7. Prancha abdominal – 3x30-60s
+        8. Elevação de pernas – 3x15-20
+        \nPara voltar ao inicio clique em /voltar
+            """
+    bot.send_message(message.chat.id, texto)
+
+@bot.message_handler(commands=["treino"])
+def treino(message):
+    chat_id = message.chat.id
+    plano = usuarios.get(chat_id, {}).get("plano")
+
+    if not plano:
+        bot.send_message(chat_id, "Você ainda não escolheu um plano. Acesse /planos para selecionar um.")
+        return
+    texto = """
+            Clique em uma das opções a seguir para consultar seu treino
+            /treinoCompleto Mostra o treino todo e as dicas
+            /treinoA Treino A
+            /treinoB Treino B
+            /treinoC Treino C
+            Para voltar ao inicio clique em /voltar
             """
     bot.send_message(message.chat.id, texto)
 
@@ -75,7 +132,7 @@ def planoBasico(message):
     chat_id = message.chat.id
     usuarios.setdefault(chat_id, {})["plano"] = "Plano Básico"
     texto = """
-        Obrigado por escolher o plano Básico, para consultar o seu treino clique em /treino \nCaso queira volta para o menu inicial digite voltar!!!
+        Obrigado por escolher o plano Básico, para consultar o seu treino clique em /treino \nPara voltar ao inicio clique em /voltar
             """
     bot.send_message(message.chat.id, texto)
 
@@ -84,7 +141,7 @@ def planoPadrao(message):
     chat_id = message.chat.id
     usuarios.setdefault(chat_id, {})["plano"] = "Plano Padrão"
     texto = """
-        Obrigado por escolher o plano Padrão, para consultar o seu treino clique em /treino \nCaso queira volta para o menu inicial digite voltar!!!
+        Obrigado por escolher o plano Padrão, para consultar o seu treino clique em /treino \nPara voltar ao inicio clique em /voltar
             """
     bot.send_message(message.chat.id, texto)
 
@@ -93,7 +150,7 @@ def planoPremium(message):
     chat_id = message.chat.id
     usuarios.setdefault(chat_id, {})["plano"] = "Plano Premium"
     texto = """
-        Obrigado por escolher o plano Premium, para consultar o seu treino clique em /treino \nCaso queira volta para o menu inicial digite voltar!!!
+        Obrigado por escolher o plano Premium, para consultar o seu treino clique em /treino \nPara voltar ao inicio clique em /voltar
             """
     bot.send_message(message.chat.id, texto)
 
@@ -121,6 +178,8 @@ def alterar_plano(message):
             🟢 /planoBasico  
             🔵 /planoPadrao  
             🟣 /planoPremium
+
+            Para voltar ao inicio clique em /voltar
         """
     else:
         texto = "Você ainda não possui um plano ativo. Para ver os planos disponíveis, use /planos"
@@ -131,19 +190,45 @@ def alterar_plano(message):
 def cadastro(message):
     chat_id = message.chat.id
     usuarios[chat_id] = {"estado": "aguardando_nome"}
-    texto = """
-        Para iniciar seu cadastro informe seu nome completo!!
-            """
-    bot.send_message(chat_id, texto)
+    bot.send_message(chat_id, "📝 Vamos iniciar seu cadastro. Por favor, informe seu nome completo:")
+
 
 @bot.message_handler(func=lambda msg: usuarios.get(msg.chat.id, {}).get("estado") == "aguardando_nome")
 def receber_nome(message):
     chat_id = message.chat.id
-    nome = message.text
-    usuarios[chat_id]["nome"] = nome
-    usuarios[chat_id]["estado"] = "nome_recebido"
-    texto = f"Obrigado, {nome}! seu cadastro foi concluido com sucesso. Agora clique em /planos para conhecer nossos planos."
+    usuarios[chat_id]["nome"] = message.text
+    usuarios[chat_id]["estado"] = "aguardando_telefone"
+    bot.send_message(chat_id, "📞 Agora informe seu número de telefone (com DDD):")
+
+@bot.message_handler(func=lambda msg: usuarios.get(msg.chat.id, {}).get("estado") == "aguardando_telefone")
+def receber_telefone(message):
+    chat_id = message.chat.id
+    usuarios[chat_id]["telefone"] = message.text
+    usuarios[chat_id]["estado"] = "aguardando_email"
+    bot.send_message(chat_id, "📧 Por fim, informe seu email:")
+
+@bot.message_handler(func=lambda msg: usuarios.get(msg.chat.id, {}).get("estado") == "aguardando_email")
+def receber_email(message):
+    chat_id = message.chat.id
+    usuarios[chat_id]["email"] = message.text
+    usuarios[chat_id]["estado"] = "cadastro_concluido"
+
+    nome = usuarios[chat_id]["nome"]
+    telefone = usuarios[chat_id]["telefone"]
+    email = usuarios[chat_id]["email"]
+
+    texto = f"""
+        ✅ Cadastro concluído com sucesso!
+
+        👤 Nome: {nome}
+        📞 Telefone: {telefone}
+        📧 Email: {email}
+
+        Agora clique em /planos para conhecer nossos planos!
+        Para voltar ao inicio clique em /voltar
+    """
     bot.send_message(chat_id, texto)
+
 
 @bot.message_handler(commands=["planos"])
 def planos(message):
@@ -154,9 +239,22 @@ def planos(message):
         bot.send_message(chat_id, "Você precisa se cadastrar primeiro. Use o comando /cadastro.")
         return
     texto = f"""
-        Olá {nome} seja muito bem vindo a nossa academia 
+        Olá {nome} seja muito bem vindo a nossa academia, escolha um de nossos planos!
 
-            🟢 Plano Básico /planoBasico – Essencial para Começar
+        🟢 Plano Básico /escolhaBasico – Essencial para Começar
+
+        🔵 Plano Padrão /escolhaPadrao – Equilíbrio e Evolução
+
+        🟣 Plano Premium /escolhaPremium – Alta Performance e Conforto Total
+
+        Para voltar ao inicio clique em /voltar
+            """
+    bot.send_message(message.chat.id, texto)
+
+@bot.message_handler(commands=["escolhaBasico"])
+def sobre(message):
+    texto = """
+            Plano Básico – Essencial para Começar
             Ideal para quem está iniciando na academia e quer manter a rotina com flexibilidade.
 
             Inclui:
@@ -172,7 +270,15 @@ def planos(message):
             💰 Valor: R$ 79,90/mês
             🎓 Desconto especial para estudantes e professores: R$ 69,90/mês
 
-            🔵 Plano Padrão /planoPadrao – Equilíbrio e Evolução
+            Clique aqui para confirmar sua escolha /planoBasico
+            Para voltar ao inicio clique em /voltar
+            """
+    bot.send_message(message.chat.id, texto)
+
+@bot.message_handler(commands=["escolhaPadrao"])
+def sobre(message):
+    texto = """
+            Plano Padrão – Equilíbrio e Evolução
             Perfeito para quem busca variedade nas atividades e suporte completo.
 
             Inclui tudo do plano Básico, mais:
@@ -187,8 +293,15 @@ def planos(message):
 
             💰 Valor: R$ 119,90/mês
             🎓 Desconto Fatec: R$ 99,90/mês
+            Clique aqui para confirmar sua escolha /planoPadrao
+            Para voltar ao inicio clique em /voltar
+            """
+    bot.send_message(message.chat.id, texto)
 
-            🟣 Plano Premium /planoPremium – Alta Performance e Conforto Total
+@bot.message_handler(commands=["escolhaPremium"])
+def sobre(message):
+    texto = """
+            Plano Premium – Alta Performance e Conforto Total
             Para quem leva a saúde a sério e quer um serviço completo e personalizado.
 
             Inclui tudo do plano Padrão, mais:
@@ -205,9 +318,10 @@ def planos(message):
 
             💰 Valor: R$ 169,90/mês
             🎓 Desconto Fatec: R$ 139,90/mês
+            Clique aqui para confirmar sua escolha /planoPadrao
+            Para voltar ao inicio clique em /voltar
             """
     bot.send_message(message.chat.id, texto)
-
 
 @bot.message_handler(commands=["sobre"])
 def sobre(message):
@@ -239,6 +353,7 @@ def sobre(message):
         Horários flexíveis, inclusive aos finais de semana
 
         Venha conhecer a FatecFit e experimente uma aula grátis! Aqui, seu objetivo é levado a sério, e o seu bem-estar é prioridade. Cadastre-se e comece hoje sua jornada de transformação! /cadastro
+        Para voltar ao inicio clique em /voltar
             """
     bot.send_message(message.chat.id, texto)
 
@@ -261,7 +376,7 @@ def receber_agendamento(message):
     usuarios[chat_id]["agendamento"] = horario
     usuarios[chat_id]["estado"] = None  # limpa o estado
 
-    bot.send_message(chat_id, f"✅ Treino agendado para: {horario}.\nSe quiser reagendar, use /agendar novamente.\n Caso queira volta para o menu inicial digite voltar!!!")
+    bot.send_message(chat_id, f"✅ Treino agendado para: {horario}.\nSe quiser reagendar, use /agendar novamente.\nPara voltar ao inicio clique em /voltar")
 
 
 @bot.message_handler(commands=["meuAgendamento"])
@@ -274,6 +389,19 @@ def meu_agendamento(message):
     else:
         bot.send_message(chat_id, "Você ainda não tem um treino agendado. Use /agendar para marcar.")
 
+@bot.message_handler(func=lambda msg: msg.text.lower() in ["voltar", "menu", "início"])
+def voltar_ao_inicio(message):
+    texto = """
+        Escolha uma das opções para continuar (clique no item):
+         /sobre Saiba mais sobre a nossa academia.
+         /cadastro Faça já o seu cadastro.
+         /treino Consulte seu treino.
+         /meuplano Consulte seu plano atual caso inscrito.
+         /meuAgendamento Consulte seu agendamento de treino.
+         /sac Fale com um des nossos atendentes.
+        Responder qualquer outra coisa não vai funcionar, clique em uma das opções
+            """
+    bot.send_message(message.chat.id, texto)
 
 
 def verificar(mensagem):
