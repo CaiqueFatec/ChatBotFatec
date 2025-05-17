@@ -58,8 +58,7 @@ def treinoCompleto(message):
         Progrida cargas semanalmente quando possível.
 
         Faça já seu agendamento de treino, clique em /agendar
-
-        Para voltar ao inicio clique em /voltar
+        \nPara voltar ao inicio clique em /voltar
             """
     bot.send_message(message.chat.id, texto)
     
@@ -123,7 +122,7 @@ def treino(message):
             /treinoA Treino A
             /treinoB Treino B
             /treinoC Treino C
-            Para voltar ao inicio clique em /voltar
+            \nPara voltar ao inicio clique em /voltar
             """
     bot.send_message(message.chat.id, texto)
 
@@ -178,8 +177,7 @@ def alterar_plano(message):
             🟢 /planoBasico  
             🔵 /planoPadrao  
             🟣 /planoPremium
-
-            Para voltar ao inicio clique em /voltar
+            \nPara voltar ao inicio clique em /voltar
         """
     else:
         texto = "Você ainda não possui um plano ativo. Para ver os planos disponíveis, use /planos"
@@ -225,7 +223,7 @@ def receber_email(message):
         📧 Email: {email}
 
         Agora clique em /planos para conhecer nossos planos!
-        Para voltar ao inicio clique em /voltar
+        \nPara voltar ao inicio clique em /voltar
     """
     bot.send_message(chat_id, texto)
 
@@ -271,7 +269,7 @@ def sobre(message):
             🎓 Desconto especial para estudantes e professores: R$ 69,90/mês
 
             Clique aqui para confirmar sua escolha /planoBasico
-            Para voltar ao inicio clique em /voltar
+            \nPara voltar ao inicio clique em /voltar
             """
     bot.send_message(message.chat.id, texto)
 
@@ -294,7 +292,7 @@ def sobre(message):
             💰 Valor: R$ 119,90/mês
             🎓 Desconto Fatec: R$ 99,90/mês
             Clique aqui para confirmar sua escolha /planoPadrao
-            Para voltar ao inicio clique em /voltar
+            \nPara voltar ao inicio clique em /voltar
             """
     bot.send_message(message.chat.id, texto)
 
@@ -318,8 +316,8 @@ def sobre(message):
 
             💰 Valor: R$ 169,90/mês
             🎓 Desconto Fatec: R$ 139,90/mês
-            Clique aqui para confirmar sua escolha /planoPadrao
-            Para voltar ao inicio clique em /voltar
+            Clique aqui para confirmar sua escolha /planoPremium
+            \nPara voltar ao inicio clique em /voltar
             """
     bot.send_message(message.chat.id, texto)
 
@@ -353,7 +351,7 @@ def sobre(message):
         Horários flexíveis, inclusive aos finais de semana
 
         Venha conhecer a FatecFit e experimente uma aula grátis! Aqui, seu objetivo é levado a sério, e o seu bem-estar é prioridade. Cadastre-se e comece hoje sua jornada de transformação! /cadastro
-        Para voltar ao inicio clique em /voltar
+        \nPara voltar ao inicio clique em /voltar
             """
     bot.send_message(message.chat.id, texto)
 
